@@ -22,7 +22,7 @@ public enum MonsterBall {
         return INSTANCE;
     }
 
-    @SidedProxy(clientSide = "com.github.ssg.myfirstmod.proxy.ClientProxy", serverSide = "com.github.ssg.myfirstmod.proxy.CommonProxy")
+    @SidedProxy(clientSide = "com.github.Karmel5950.monsterball.proxy.ClientProxy", serverSide = "com.github.Karmel5950.monsterball.proxy.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
