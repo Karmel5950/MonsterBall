@@ -1,0 +1,16 @@
+[
+{
+  "modid": "monster_ball",
+  "name": "Monster Ball",
+  "description": "Use Monster Ball to catch all the creature you can see",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Karmel5950","dabai","duluoli"],
+  "credits": "Thinks for all the MC players",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
