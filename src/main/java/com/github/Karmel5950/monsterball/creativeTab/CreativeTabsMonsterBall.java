@@ -4,15 +4,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class CreativeTabsMyFirstMod extends CreativeTabs {
+public class CreativeTabsMonsterBall extends CreativeTabs {
 
 
-    public CreativeTabsMyFirstMod() {
-        super("MyFirstMod");
+    public CreativeTabsMonsterBall() {
+        super("MonsterBall");
     }
 
     @Override
     public ItemStack createIcon() {
         return new ItemStack(Items.DIAMOND);
     }
+
 }
