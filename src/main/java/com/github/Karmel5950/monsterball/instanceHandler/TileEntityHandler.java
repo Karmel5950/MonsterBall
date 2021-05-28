@@ -5,6 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TileEntityHandler {
-    public static final List<TileEntity> TileEntitys = new ArrayList<TileEntity>();
+    public static final List<TileEntity> tileEntities = new ArrayList<TileEntity>();
 
 }
