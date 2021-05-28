@@ -10,6 +10,6 @@ public class BlockHandler {
     public static final List<Block> blocks = new ArrayList<Block>();
 
     //public static final Block blockMonsterBallExchangeMachine = new BlockMonsterBallExchangeMachine();
-    //public static final Block blockMonsterBallProduceMachine = new BlockMonsterBallProduceMachine();
+    public static final Block blockMonsterBallProduceMachine = new BlockMonsterBallProduceMachine();
     //public static final Block blockMonsterHealer = new BlockMonsterHealer();
 }
