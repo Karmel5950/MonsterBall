@@ -9,15 +9,15 @@ import java.util.List;
 public class ItemHandler {
     public static final List<Item> items = new ArrayList<Item>();
 
-    Item itemAnimalMonsterBall = new ItemAnimalMonsterBall();
-    Item itemArchitectureMonsterBall = new ItemArchitectureMonsterBall();
-    Item itemBasicMonsterBall = new ItemBasicMonsterBall();
-    Item itemCreeperMonsterBall = new ItemCreeperMonsterBall();
-    Item itemEndeMonsterBall = new ItemEndeMonsterBall();
-    Item itemMonsterHealPotion = new ItemMonsterHealPotion();
-    Item itemSlimeMonsterBall = new ItemSlimeMonsterBall();
-    Item itemSupremeMonsterBall = new ItemSupremeMonsterBall();
-    Item itemUndeadMonsterBall = new ItemUndeadMonsterBall();
-    Item itemVillagerMonsterBall = new ItemVillagerMonsterBall();
+    public static final Item itemAnimalMonsterBall = new ItemAnimalMonsterBall();
+    public static final Item itemArchitectureMonsterBall = new ItemArchitectureMonsterBall();
+    public static final Item itemBasicMonsterBall = new ItemBasicMonsterBall();
+    public static final Item itemCreeperMonsterBall = new ItemCreeperMonsterBall();
+    public static final Item itemEnderMonsterBall = new ItemEnderMonsterBall();
+    public static final Item itemMonsterHealPotion = new ItemMonsterHealPotion();
+    public static final Item itemSlimeMonsterBall = new ItemSlimeMonsterBall();
+    public static final Item itemSupremeMonsterBall = new ItemSupremeMonsterBall();
+    public static final Item itemUndeadMonsterBall = new ItemUndeadMonsterBall();
+    public static final Item itemVillagerMonsterBall = new ItemVillagerMonsterBall();
 
 }
