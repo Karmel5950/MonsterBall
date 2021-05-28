@@ -6,7 +6,7 @@ import com.github.Karmel5950.monsterball.item.API.IHasModel;
 import net.minecraft.item.Item;
 
 public class ItemEnderMonsterBall extends Item implements IHasModel {
-    private final String name = "ender_monsterbal";
+    private final String name = "ender_monsterball";
     public ItemEnderMonsterBall(){
         super();
         this.setTranslationKey(MonsterBall.MODID + "." + this.name);
