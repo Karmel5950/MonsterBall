@@ -9,7 +9,7 @@ import java.util.List;
 public class BlockHandler {
     public static final List<Block> blocks = new ArrayList<Block>();
 
-    BlockMonsterBallExchangeMachine blockMonsterBallExchangeMachine = new BlockMonsterBallExchangeMachine();
-    BlockMonsterBallProduceMachine blockMonsterBallProduceMachine = new BlockMonsterBallProduceMachine();
-    BlockMonsterHealer blockMonsterHealer = new BlockMonsterHealer();
+    //public static final Block blockMonsterBallExchangeMachine = new BlockMonsterBallExchangeMachine();
+    //public static final Block blockMonsterBallProduceMachine = new BlockMonsterBallProduceMachine();
+    //public static final Block blockMonsterHealer = new BlockMonsterHealer();
 }

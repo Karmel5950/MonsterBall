@@ -5,18 +5,19 @@ import com.github.Karmel5950.monsterball.instanceHandler.ItemHandler;
 import com.github.Karmel5950.monsterball.item.API.IHasModel;
 import net.minecraft.item.Item;
 
-public class ItemUndeadMonsterBall extends Item implements IHasModel {
-    private final String name = "undead_monsterbal";
-    public ItemUndeadMonsterBall(){
+public class ItemEnderMonsterBall extends Item implements IHasModel {
+    private final String name = "ender_monsterbal";
+    public ItemEnderMonsterBall(){
         super();
         this.setTranslationKey(MonsterBall.MODID + "." + this.name);
         this.setRegistryName(MonsterBall.MODID + ":" + this.name);
         this.setCreativeTab(MonsterBall.creativeTabsMonsterBall);
-        this.setMaxStackSize(64);
+        this.setMaxStackSize(1);
         this.setNoRepair();
         this.setMaxDamage(0);
         ItemHandler.items.add(this);
     }
+
     @Override
     public void registerModel() {
         MonsterBall.proxy.registerItemRenderer(this, 0, "inventory");
