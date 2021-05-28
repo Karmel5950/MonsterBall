@@ -6,7 +6,7 @@ import com.github.Karmel5950.monsterball.item.API.IHasModel;
 import net.minecraft.item.Item;
 
 public class ItemSupremeMonsterBall extends Item implements IHasModel {
-    private final String name = "supreme_monsterbal";
+    private final String name = "supreme_monsterball";
     public ItemSupremeMonsterBall(){
         super();
         this.setTranslationKey(MonsterBall.MODID + "." + this.name);

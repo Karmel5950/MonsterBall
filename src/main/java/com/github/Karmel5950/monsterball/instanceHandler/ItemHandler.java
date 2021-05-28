@@ -13,7 +13,7 @@ public class ItemHandler {
     public static final Item itemArchitectureMonsterBall = new ItemArchitectureMonsterBall();
     public static final Item itemBasicMonsterBall = new ItemBasicMonsterBall();
     public static final Item itemCreeperMonsterBall = new ItemCreeperMonsterBall();
-    public static final Item itemEndeMonsterBall = new ItemEnderMonsterBall();
+    public static final Item itemEnderMonsterBall = new ItemEnderMonsterBall();
     public static final Item itemMonsterHealPotion = new ItemMonsterHealPotion();
     public static final Item itemSlimeMonsterBall = new ItemSlimeMonsterBall();
     public static final Item itemSupremeMonsterBall = new ItemSupremeMonsterBall();

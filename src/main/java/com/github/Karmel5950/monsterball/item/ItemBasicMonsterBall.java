@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
 public class ItemBasicMonsterBall extends Item implements IHasModel {
-    private final String name = "basic_monsterbal";
+    private final String name = "basic_monsterball";
 
     public ItemBasicMonsterBall(){
         super();
