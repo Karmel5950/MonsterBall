@@ -12,6 +12,6 @@ item.monster_ball.supreme_monsterball.name=Supreme MonsterBall
 item.monster_ball.undead_monsterball.name=Undead MonsterBall
 item.monster_ball.villager_monsterball.name=Villager MonsterBall
 #Block
-tile.monster_ball.monsterball_produce_machine.name=MonsterBall Produce Machine
+tile.monster_ball.produce_machine.name=MonsterBall Produce Machine
 #Item Imformation
 item.monster_ball.itemImformation.entity=Monster:

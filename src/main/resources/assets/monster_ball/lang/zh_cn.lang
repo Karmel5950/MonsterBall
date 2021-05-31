@@ -12,6 +12,6 @@ item.monster_ball.supreme_monsterball.name=至高怪兽球
 item.monster_ball.undead_monsterball.name=亡灵怪兽球
 item.monster_ball.villager_monsterball.name=村民怪兽球
 #Block
-tile.monster_ball.monsterball_produce_machine.name=怪兽球制造机
+tile.monster_ball.produce_machine.name=怪兽球制造机
 #Item Imformation
 item.monster_ball.itemImformation.entity=怪兽:
