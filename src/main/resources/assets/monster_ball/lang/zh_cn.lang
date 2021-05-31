@@ -1,3 +1,17 @@
 #创造栏模组名
 itemGroup.MonsterBall=怪兽球
+#Item
+item.monster_ball.basic_monsterball.name=基础怪兽球
+item.monster_ball.animal_monsterball.name=动物怪兽球
+item.monster_ball.architecture_monsterball.name=构造体怪兽球
+item.monster_ball.creeper_monsterball.name=苦力怕怪兽球
+item.monster_ball.ender_monsterball.name=末影怪兽球
+item.monster_ball.monster_heal_potion.name=怪兽治疗药剂
+item.monster_ball.slime_monsterball.name=史莱姆怪兽球
+item.monster_ball.supreme_monsterball.name=至高怪兽球
+item.monster_ball.undead_monsterball.name=亡灵怪兽球
+item.monster_ball.villager_monsterball.name=村民怪兽球
+#Block
 tile.monster_ball.produce_machine.name=怪兽球制造机
+#Item Imformation
+item.monster_ball.itemImformation.entity=怪兽:
