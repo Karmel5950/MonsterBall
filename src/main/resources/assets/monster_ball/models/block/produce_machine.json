@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "monster_ball:block/produce_machine_top_off",
+        "front": "monster_ball:block/produce_machine_front_off",
+        "left": "monster_ball:block/produce_machine_left_off",
+        "right": "monster_ball:block/produce_machine_right_off",
+        "back": "monster_ball:block/produce_machine_back_off",
+        "bottom": "monster_ball:block/produce_machine_top_off"
+    }
+}

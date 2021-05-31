@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "monster_ball:produce_machine" },
+    "facing=south": { "model": "monster_ball:produce_machine", "y": 180 },
+    "facing=west":  { "model": "monster_ball:produce_machine", "y": 270 },
+    "facing=east":  { "model": "monster_ball:produce_machine", "y": 90 }
+  }
+}
