@@ -1,3 +1,17 @@
-#creative tab name
+#Creative Tab
 itemGroup.MonsterBall=MonsterBall
-tile.monster_ball.produce_machine.name=MonsterBallProduceMachine
+#Item
+item.monster_ball.basic_monsterball.name=Basic MonsterBall
+item.monster_ball.animal_monsterball.name=Animal MonsterBall
+item.monster_ball.architecture_monsterball.name=Architecture MonsterBall
+item.monster_ball.creeper_monsterball.name=Creeper MonsterBall
+item.monster_ball.ender_monsterball.name=EnderMonsterBall
+item.monster_ball.monster_heal_potion.name=Monster Heal Potion
+item.monster_ball.slime_monsterball.name=Slime MonsterBall
+item.monster_ball.supreme_monsterball.name=Supreme MonsterBall
+item.monster_ball.undead_monsterball.name=Undead MonsterBall
+item.monster_ball.villager_monsterball.name=Villager MonsterBall
+#Block
+tile.monster_ball.monsterball_produce_machine.name=MonsterBall Produce Machine
+#Item Imformation
+item.monster_ball.itemImformation.entity=Monster:
