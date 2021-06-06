@@ -1,8 +1,28 @@
 {
   "variants": {
-    "facing=north": { "model": "monster_ball:produce_machine" },
-    "facing=south": { "model": "monster_ball:produce_machine", "y": 180 },
-    "facing=west":  { "model": "monster_ball:produce_machine", "y": 270 },
-    "facing=east":  { "model": "monster_ball:produce_machine", "y": 90 }
+    "burning=false,facing=south": {
+      "model": "monster_ball:produce_machine_off"
+    },
+    "burning=false,facing=west": {
+      "model": "monster_ball:produce_machine_off","y": 90
+    },
+    "burning=false,facing=north": {
+      "model": "monster_ball:produce_machine_off","y": 180
+    },
+    "burning=false,facing=east": {
+      "model": "monster_ball:produce_machine_off","y": 270
+    },
+    "burning=true,facing=south": {
+      "model": "monster_ball:produce_machine_on"
+    },
+    "burning=true,facing=west": {
+      "model": "monster_ball:produce_machine_on","y": 90
+    },
+    "burning=true,facing=north": {
+      "model": "monster_ball:produce_machine_on","y": 180
+    },
+    "burning=true,facing=east": {
+      "model": "monster_ball:produce_machine_on","y": 270
+    }
   }
 }
