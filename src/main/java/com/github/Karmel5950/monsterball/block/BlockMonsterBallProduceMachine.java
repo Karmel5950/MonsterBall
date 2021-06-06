@@ -2,6 +2,7 @@ package com.github.Karmel5950.monsterball.block;
 
 import com.github.Karmel5950.monsterball.MonsterBall;
 import com.github.Karmel5950.monsterball.instanceHandler.BlockHandler;
+import com.github.Karmel5950.monsterball.instanceHandler.GuiHandler;
 import com.github.Karmel5950.monsterball.instanceHandler.ItemHandler;
 import com.github.Karmel5950.monsterball.item.API.IHasModel;
 import com.github.Karmel5950.monsterball.tileentity.TileEntityMonsterBallProduceMachine;
@@ -25,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMonsterBallProduceMachine extends Block implements IHasModel {
-    private final String name = "produce_machine";
+    public static final String name = "produce_machine";
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool BURNING = PropertyBool.create("burning");
 
@@ -38,48 +39,13 @@ public class BlockMonsterBallProduceMachine extends Block implements IHasModel {
         this.setCreativeTab(MonsterBall.creativeTabsMonsterBall);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH)
                 .withProperty(BURNING, Boolean.FALSE));
-
+        this.setLightLevel(1F);
     }
 
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-    {
-        this.setDefaultFacing(worldIn, pos, state);
-    }
-
-    private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
-    {
-        if (!worldIn.isRemote)
-        {
-            IBlockState iblockstate = worldIn.getBlockState(pos.north());
-            IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
-            IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
-            IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-
-            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock())
-            {
-                enumfacing = EnumFacing.SOUTH;
-            }
-            else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock())
-            {
-                enumfacing = EnumFacing.NORTH;
-            }
-            else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock())
-            {
-                enumfacing = EnumFacing.EAST;
-            }
-            else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock())
-            {
-                enumfacing = EnumFacing.WEST;
-            }
-
-            worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
-        }
-    }
 
     public IBlockState getStateFromMeta(int meta)
     {
-        EnumFacing enumfacing = EnumFacing.byIndex(meta&3);
+        EnumFacing enumfacing = EnumFacing.byHorizontalIndex(meta & 3);
 
         if (enumfacing.getAxis() == EnumFacing.Axis.Y)
         {
@@ -100,22 +66,12 @@ public class BlockMonsterBallProduceMachine extends Block implements IHasModel {
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
-
-        if (stack.hasDisplayName())
-        {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-
-            if (tileentity instanceof TileEntityFurnace)
-            {
-                ((TileEntityFurnace)tileentity).setCustomInventoryName(stack.getDisplayName());
-            }
-        }
     }
 
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, FACING, BURNING);
+        return new BlockStateContainer(this, BURNING, FACING);
     }
 
     @Override
@@ -127,11 +83,10 @@ public class BlockMonsterBallProduceMachine extends Block implements IHasModel {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote)
         {
-            BlockPos playerPos = player.getPosition();
-            //int id = GUIHandler.GUI_GLASS_FURNACE;
-            //player.openGui(MyFirstMod.getInstance(), id, world, pos.getX(), pos.getY(), pos.getZ());
+            int id = GuiHandler.GUI_PRODUCE_MACHINE;
+            player.openGui(MonsterBall.getInstance(), id, world, pos.getX(), pos.getY(), pos.getZ());
         }
-        return false;
+        return true;
     }
 
     @Override

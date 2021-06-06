@@ -5,6 +5,7 @@ import com.github.Karmel5950.monsterball.entity.render.RenderBasicMonsterBall;
 import com.github.Karmel5950.monsterball.instanceHandler.BlockHandler;
 import com.github.Karmel5950.monsterball.instanceHandler.EntityHandler;
 import com.github.Karmel5950.monsterball.instanceHandler.ItemHandler;
+import com.github.Karmel5950.monsterball.instanceHandler.TileEntityHandler;
 import com.github.Karmel5950.monsterball.item.API.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -47,6 +48,7 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void onBlockRegister(RegistryEvent.Register<Block> event){
         event.getRegistry().registerAll(BlockHandler.blocks.toArray(new Block[0]));
+        new TileEntityHandler();
     }
 
     @SubscribeEvent
