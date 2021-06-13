@@ -54,7 +54,7 @@ public class ItemBasicMonsterBall extends Item implements IHasModel {
             if (!worldIn.isRemote)
             {
                 EntityBasicMonsterBall entityBasicMonsterBall = new EntityBasicMonsterBall(worldIn, playerIn);
-                entityBasicMonsterBall.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) (config.testint), 0.0F);
+                entityBasicMonsterBall.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) (1.5), 0.0F);
                 worldIn.spawnEntity(entityBasicMonsterBall);
             }
         }else {
