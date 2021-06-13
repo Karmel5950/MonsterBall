@@ -5,27 +5,33 @@ import com.github.Karmel5950.monsterball.block.BlockMonsterBallProduceMachine;
 import com.github.Karmel5950.monsterball.config.config;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
 
     //0 , 1 , 2 - Raw Meterial Slot , 3 - Fuel Slot , 4 - Produce Slot
-    private ItemStackHandler inventory = new ItemStackHandler(5);
+    private final ItemStackHandler inventory = new ItemStackHandler(5);
     private int burnTime = 0;
     private final int maxBurnTime = 2000;
     private int burnProcess = 0;
     private final int burnTagetProcess = 200;
     private boolean isCosumeRawMeterial = false ;
-    private String[][] recipe = new String[][]{config.recipe1,config.recipe2,config.recipe3};
-
+    private final String[] recipe1 = config.recipe1;
+    private final String[] recipe2 = config.recipe2;
+    private final String[] recipe3 = config.recipe3;
+    private final String[] produceRecipe = config.produce;
+    private ItemStack produceItem;
     @Override
     public void update() {
         ItemStack[] rawMaterialSlot = new ItemStack[]{inventory.getStackInSlot(0),inventory.getStackInSlot(1),inventory.getStackInSlot(2)};
@@ -34,8 +40,10 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
 
         //add fule
         if(isNeedFuel(fuelSlot)){
-            burnTime += getItemBurnTime(fuelSlot);
-            fuelSlot.shrink(1);
+            if(!fuelSlot.isEmpty()){
+                burnTime += getItemBurnTime(fuelSlot);
+                fuelSlot.shrink(1);
+            }
             if (burnTime > maxBurnTime){
                 burnTime = maxBurnTime;
             }
@@ -43,7 +51,8 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
 
         //cosume raw meterial
         if (!isCosumeRawMeterial){
-            if (isRecipe(rawMaterialSlot)){
+            if (isRecipe(rawMaterialSlot) != ItemStack.EMPTY && produceSlot.isEmpty()){
+                produceItem = isRecipe(rawMaterialSlot);
                 for (int i = 0 ; i < 3 ; i++){
                     rawMaterialSlot[i].shrink(1);
                 }
@@ -63,7 +72,7 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
         //produce
         if (burnTagetProcess == burnProcess){
             burnProcess = 0 ;
-            produceItem();
+            produceItem(produceItem);
             isCosumeRawMeterial = false;
         }
 
@@ -82,6 +91,7 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
         this.burnProcess = compound.getInteger("burnProgress");
         this.burnTime = compound.getInteger("burnTime");
         this.isCosumeRawMeterial = compound.getBoolean("isCosumeRawMeterial");
+        this.produceItem.deserializeNBT(compound.getCompoundTag("produceItem"));
     }
 
     @Override
@@ -92,6 +102,7 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
         compound.setInteger("burnTime",this.burnTime);
         compound.setInteger("maxBurnTime", this.maxBurnTime);
         compound.setBoolean("isCosumeRawMeterial",isCosumeRawMeterial);
+        compound.setTag("produceItem",this.produceItem.serializeNBT());
         return super.writeToNBT(compound);
     }
 
@@ -108,22 +119,26 @@ public class TileEntityMonsterBallProduceMachine extends TileEntityFurnace {
         return burnTime > 0 && isCosumeRawMeterial ;
     }
 
-    public void produceItem()
+    public void produceItem(ItemStack itemStack)
     {
-            inventory.setStackInSlot(4,new ItemStack(Items.DIAMOND));
-            /*if (itemstack2.isEmpty())
-            {
-                //this.furnaceItemStacks.set(2, itemstack1.copy());
-            }
-            else if (itemstack2.getItem() == itemstack1.getItem())
-            {
-                //itemstack2.grow(itemstack1.getCount());
-            }*/
-
+            inventory.setStackInSlot(4,itemStack);
     }
 
-    public  boolean isRecipe(ItemStack[] rawMaterialSlot){
-        return !rawMaterialSlot[0].isEmpty() && !rawMaterialSlot[1].isEmpty() && !rawMaterialSlot[2].isEmpty();
+    public  ItemStack isRecipe(ItemStack[] rawMaterialSlot){
+        if(!rawMaterialSlot[0].isEmpty() && !rawMaterialSlot[1].isEmpty() && !rawMaterialSlot[2].isEmpty()){
+            String items =Objects.requireNonNull(rawMaterialSlot[0].getItem().getRegistryName()).getPath()+
+                    Objects.requireNonNull(rawMaterialSlot[1].getItem().getRegistryName()).getPath()+
+                    Objects.requireNonNull(rawMaterialSlot[2].getItem().getRegistryName()).getPath();
+            for (int i = 0;i < recipe1.length;i++){
+                String recipe = recipe1[i]+recipe2[i]+recipe3[i];
+                if (items.equals(recipe) ){
+                    Item item  =  Item.REGISTRY.getObject(new ResourceLocation(produceRecipe[i]));
+                    return new ItemStack(item);
+                }
+            }
+        }
+
+        return ItemStack.EMPTY;
     }
 
     public boolean isNeedFuel(ItemStack fuelItemStack){
