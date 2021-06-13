@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBasicMonsterBall extends Item implements IHasModel {
+public class ItemBasicMonsterBall extends ItemMonsterBall implements IHasModel {
     private final String name = "basic_monsterball";
 
     public ItemBasicMonsterBall(){
@@ -32,12 +32,6 @@ public class ItemBasicMonsterBall extends Item implements IHasModel {
         this.setNoRepair();
         this.setMaxDamage(0);
         ItemHandler.items.add(this);
-    }
-
-
-    @Override
-    public void registerModel() {
-        MonsterBall.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
@@ -66,26 +60,5 @@ public class ItemBasicMonsterBall extends Item implements IHasModel {
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
     }
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        NBTTagCompound tag = getItemTagCompound(stack);
-        if(!tag.hasKey("monsterBallEntity")){
-            tooltip.add(I18n.format("item.monster_ball.itemImformation.entity") + "empty");
-        }else {
-            tooltip.add(I18n.format("item.monster_ball.itemImformation.entity") + tag.getString("monsterBallEntityName"));
-        }
-    }
 
-    public static NBTTagCompound getItemTagCompound(ItemStack stack){
-        NBTTagCompound tag;
-        if(stack.hasTagCompound()){
-            tag = stack.getTagCompound();
-        }else{
-            tag = new NBTTagCompound();
-            stack.setTagCompound(tag);
-        }
-
-        return tag;
-    }
 }
